@@ -21,6 +21,7 @@
                                 <li class="dropdown-divider"></li>
                                 {{-- ログアウトへのリンク --}}
                                 <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+
                         </ul>
                     </li>
                 @else
