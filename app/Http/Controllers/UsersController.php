@@ -83,4 +83,51 @@ class UsersController extends Controller
             'users' => $followers,
         ]);
     }
+      /**
+     * ユーザのファボ一覧ページを表示するアクション。
+     *
+     * @param  $id  ユーザのid
+     * @return \Illuminate\Http\Response
+     */
+    public function favoritings($id)
+    {
+        // idの値でユーザを検索して取得
+        $user = User::findOrFail($id);
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+
+        // ユーザのファボ一覧を取得
+        $favoritings = $user->favoritings()->paginate(10);
+
+        // ファボ一覧ビューでそれらを表示
+        return view('users.favoritings', [
+            'user' => $user,
+            'users' => $favoritings,
+        ]);
+    }
+
+    /**
+     * ユーザのフォロワー一覧ページを表示するアクション。
+     *
+     * @param  $id  ユーザのid
+     * @return \Illuminate\Http\Response
+     */
+    public function favoriters($id)
+    {
+        // idの値でユーザを検索して取得
+        $user = User::findOrFail($id);
+
+        // 関係するモデルの件数をロード
+        $user->loadRelationshipCounts();
+
+        // ユーザのファボ一覧を取得
+        $favoriters = $user->favoriters()->paginate(10);
+
+        // ファボ一覧ビューでそれらを表示
+        return view('users.favoriters', [
+            'user' => $user,
+            'users' => $favoriters,
+        ]);
+    }
 }
