@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Favorites extends Controller
+class FavoritesController extends Controller
 {
     /**
      * 投稿idをお気に入り登録するアクション。
@@ -15,7 +15,7 @@ class Favorites extends Controller
     public function store($id)
     {
         // 認証済みユーザ（閲覧者）が、 idをお気に入り登録する
-        \Auth::user()->favorites($id);
+        \Auth::user()->favorite($id);
         // 前のURLへリダイレクトさせる
         return back();
     }

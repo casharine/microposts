@@ -1,13 +1,11 @@
-@if (Auth::id() != $user->id)
-    @if (Auth::user()->is_favoriting($user->id))
-        {{-- アンフォローボタンのフォーム --}}
-        {!! Form::open(['route' => ['user.unfavorite', $user->id], 'method' => 'delete']) !!}
-            {!! Form::submit('Unfavorite', ['class' => "btn btn-warning btn-block"]) !!}
-        {!! Form::close() !!}
-    @else
-        {{-- フォローボタンのフォーム --}}
-        {!! Form::open(['route' => ['user.favorite', $user->id]]) !!}
-            {!! Form::submit('Favorite', ['class' => "btn btn-success btn-block"]) !!}
-        {!! Form::close() !!}
-    @endif
+@if (Auth::user()->is_favoriting($micropost->id))
+    {{-- アンフォローボタンのフォーム --}}
+    {!! Form::open(['route' => ['favorites.unfavorite', $micropost->id], 'method' => 'delete']) !!}
+        {!! Form::submit('Unfavorite', ['class' => "btn btn-warning btn-sm"]) !!}
+    {!! Form::close() !!}
+@else
+    {{-- フォローボタンのフォーム --}}
+    {!! Form::open(['route' => ['favorites.favorite', $micropost->id]]) !!}
+        {!! Form::submit('Favorite', ['class' => "btn btn-success btn-sm"]) !!}
+    {!! Form::close() !!}
 @endif
