@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     
      Route::group(['prefix' => 'users/{id}'], function () {
+        Route::get('favorite', 'FavoritesController@store')->name('favorites.favorite');
         Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
         Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
         Route::get('favoritings', 'UsersController@favoritings')->name('users.favoritings');
