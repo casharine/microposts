@@ -21,6 +21,9 @@
                                 <li class="dropdown-divider"></li>
                                 {{-- ログアウトへのリンク --}}
                                 <li class="dropdown-item">{!! link_to_route('logout.get', 'Logout') !!}</li>
+                                <li class="dropdown-divider"></li>
+                                {{-- お気に入りへのリンク --}}
+                                <li class="dropdown-item">{!! link_to_route('users.favoriters', 'Favoriters' ,['id' => Auth::id()]) !!}</li>
 
                         </ul>
                     </li>
